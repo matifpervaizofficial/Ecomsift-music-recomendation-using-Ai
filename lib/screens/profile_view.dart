@@ -97,12 +97,12 @@ class _ProfileViewState extends State<ProfileView> {
           ),
         ),
         Text(
-          "Kevin Backer",
+          "Amna Hassan",
           style: AppColorScheme.heading3(
               fontWeight: FontWeight.normal, color: Colors.black),
         ),
         Text(
-          "kevinbacker134@gmail.com",
+          "amna.00427332@gmail.com",
           style: AppColorScheme.bodyText(
               fontWeight: FontWeight.normal, color: Colors.grey),
         ),

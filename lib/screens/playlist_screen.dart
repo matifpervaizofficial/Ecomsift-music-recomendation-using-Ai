@@ -1,4 +1,6 @@
+import 'package:emosift/models/song_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../models/playlist_model.dart';
 
@@ -38,7 +40,6 @@ class PlaylistScreen extends StatelessWidget {
               children: [
                 _PlaylistInformation(playlist: playlist),
                 const SizedBox(height: 30),
-                const _PlayOrShuffleSwitch(),
                 _PlaylistSongs(playlist: playlist),
               ],
             ),
@@ -53,9 +54,11 @@ class _PlaylistSongs extends StatelessWidget {
   const _PlaylistSongs({
     Key? key,
     required this.playlist,
+    this.song,
   }) : super(key: key);
 
   final Playlist playlist;
+  final Song? song;
 
   @override
   Widget build(BuildContext context) {
@@ -64,124 +67,41 @@ class _PlaylistSongs extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: playlist.songs.length,
       itemBuilder: (context, index) {
-        return ListTile(
-          leading: Text(
-            '${index + 1}',
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium!
-                .copyWith(fontWeight: FontWeight.bold),
-          ),
-          title: Text(
-            playlist.songs[index].title,
-            style: Theme.of(context)
-                .textTheme
-                .bodyLarge!
-                .copyWith(fontWeight: FontWeight.bold),
-          ),
-          subtitle: Text('${playlist.songs[index].description} ⚬ 02:45'),
-          trailing: const Icon(
-            Icons.more_vert,
-            color: Colors.white,
-          ),
-        );
-      },
-    );
-  }
-}
-
-class _PlayOrShuffleSwitch extends StatefulWidget {
-  const _PlayOrShuffleSwitch({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  State<_PlayOrShuffleSwitch> createState() => _PlayOrShuffleSwitchState();
-}
-
-class _PlayOrShuffleSwitchState extends State<_PlayOrShuffleSwitch> {
-  bool isPlay = true;
-
-  @override
-  Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          isPlay = !isPlay;
-        });
-      },
-      child: Container(
-        height: 50,
-        width: width,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Stack(
+        return Column(
           children: [
-            AnimatedPositioned(
-              duration: const Duration(milliseconds: 200),
-              left: isPlay ? 0 : width * 0.45,
-              child: Container(
-                height: 50,
-                width: width * 0.45,
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade400,
-                  borderRadius: BorderRadius.circular(15),
-                ),
+            ListTile(
+              onTap: () {
+                Get.toNamed('/song', arguments: song);
+              },
+              leading: Text(
+                '${index + 1}',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+              ),
+              title: Text(
+                playlist.songs[index].title,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge!
+                    .copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+              ),
+              subtitle: Text(
+                '${playlist.songs[index].description} ⚬ 02:45',
+                style: TextStyle(color: Colors.grey.shade300),
+              ),
+              trailing: const Icon(
+                Icons.more_vert,
+                color: Colors.white,
               ),
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Center(
-                        child: Text(
-                          'Play',
-                          style: TextStyle(
-                            color: isPlay ? Colors.white : Colors.blue,
-                            fontSize: 17,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Icon(
-                        Icons.play_circle,
-                        color: isPlay ? Colors.white : Colors.blue,
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Center(
-                        child: Text(
-                          'Shuffle',
-                          style: TextStyle(
-                            color: isPlay ? Colors.blue : Colors.white,
-                            fontSize: 17,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Icon(
-                        Icons.shuffle,
-                        color: isPlay ? Colors.blue : Colors.white,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+            Divider(
+              thickness: 0.2,
+            )
           ],
-        ),
-      ),
+        );
+      },
     );
   }
 }
@@ -213,7 +133,7 @@ class _PlaylistInformation extends StatelessWidget {
           style: Theme.of(context)
               .textTheme
               .headlineSmall!
-              .copyWith(fontWeight: FontWeight.bold),
+              .copyWith(fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ],
     );

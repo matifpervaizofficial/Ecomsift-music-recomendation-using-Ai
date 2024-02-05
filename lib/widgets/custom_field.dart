@@ -39,6 +39,7 @@ class _MyCustomTextFieldState extends State<MyCustomTextField> {
         ),
         SizedBox(height: 8.0),
         TextFormField(
+          style: TextStyle(color: Colors.black),
           obscureText: widget.isPassword ? _obscureText : false,
           decoration: InputDecoration(
             prefixIcon: Icon(

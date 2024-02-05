@@ -22,7 +22,7 @@ class PlaylistCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 10),
         padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
-          color: Colors.blue.shade800.withOpacity(0.6),
+          color: Colors.blue.shade500.withOpacity(0.5),
           borderRadius: BorderRadius.circular(15.0),
         ),
         child: Row(
@@ -45,24 +45,18 @@ class PlaylistCard extends StatelessWidget {
                 children: [
                   Text(
                     playlist.title,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge!
-                        .copyWith(fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                   Text(
                     '${playlist.songs.length} songs',
                     maxLines: 2,
-                    style: Theme.of(context).textTheme.bodySmall,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall!
+                        .copyWith(color: Colors.white),
                   ),
                 ],
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.play_circle,
-                color: Colors.white,
               ),
             ),
           ],

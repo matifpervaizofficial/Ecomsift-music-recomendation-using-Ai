@@ -1,4 +1,5 @@
 import 'package:emosift/screens/fav.dart';
+import 'package:emosift/screens/playlistsscreen.dart';
 import 'package:emosift/screens/profile_view.dart';
 import 'package:flutter/material.dart';
 
@@ -25,8 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _pages = [
     MainScreen(),
-    FavoritePage(favoriteSongs: Song.songs),
-    _PlaylistMusic(playlists: Playlist.playlists),
+    FavoritesPage(),
+    PlaylistMusicsScreen(playlists: Playlist.playlists),
     ProfileView(),
   ];
 
@@ -38,8 +39,8 @@ class _HomeScreenState extends State<HomeScreen> {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Colors.blue.shade800.withOpacity(0.8),
-            Colors.blue.shade200.withOpacity(0.8),
+            Colors.blue.shade900.withOpacity(0.8),
+            Colors.blue.shade400.withOpacity(0.8),
           ],
         ),
       ),
@@ -171,7 +172,10 @@ class _DiscoverMusic extends StatelessWidget {
         children: [
           Text(
             'Welcome',
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: Theme.of(context)
+                .textTheme
+                .bodyLarge!
+                .copyWith(color: Colors.white),
           ),
           const SizedBox(height: 5),
           Text(
@@ -179,10 +183,11 @@ class _DiscoverMusic extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .headline6!
-                .copyWith(fontWeight: FontWeight.bold),
+                .copyWith(fontWeight: FontWeight.bold, color: Colors.white),
           ),
           const SizedBox(height: 20),
           TextFormField(
+            style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
               isDense: true,
               filled: true,

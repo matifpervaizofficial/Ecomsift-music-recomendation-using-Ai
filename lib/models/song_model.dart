@@ -28,6 +28,18 @@ class Song {
       coverUrl: 'assets/images/ya_adheem.jpg',
     ),
     Song(
+      title: 'Muhammad Nabina',
+      description: 'Muhammad Nabina',
+      url: 'assets/music/nabina.mp3',
+      coverUrl: 'assets/images/nabina.jpg',
+    ),
+    Song(
+      title: 'Subhan Allah',
+      description: 'Subhan Allah',
+      url: 'assets/music/tasbih.mp3',
+      coverUrl: 'assets/images/tasbih.jpg',
+    ),
+    Song(
       title: 'Jamal ul Wajood',
       description: 'Jamal ul Wajood',
       url: 'assets/music/jamal_ul.mp3',

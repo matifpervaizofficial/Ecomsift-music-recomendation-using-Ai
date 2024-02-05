@@ -1,4 +1,5 @@
 import 'package:emosift/colors_scheme.dart';
+import 'package:emosift/screens/emotion_detector.dart';
 import 'package:emosift/screens/home_screen.dart';
 import 'package:emosift/widgets/app_bar.dart';
 import 'package:emosift/widgets/custom_button.dart';
@@ -30,7 +31,7 @@ class LoginPageView extends StatelessWidget {
               child: MyCustomTextField(
                 title: "Email",
                 icon: Icons.email,
-                hintText: "numanzafar994@gmail.com",
+                hintText: "Enter your mail",
                 leadingIconColor: AppColorScheme.secondaryColor,
               ),
             ),
@@ -56,7 +57,7 @@ class LoginPageView extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                    MaterialPageRoute(builder: (context) => EmotionDetector()),
                   );
                 },
                 isSocial: false,

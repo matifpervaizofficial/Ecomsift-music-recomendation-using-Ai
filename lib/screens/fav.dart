@@ -1,24 +1,46 @@
+import 'package:emosift/widgets/song_card.dart';
 import 'package:flutter/material.dart';
-import '../models/song_model.dart';
-import '../widgets/song_card.dart';
+import 'package:get/get.dart';
 
-class FavoritePage extends StatelessWidget {
-  final List<Song> favoriteSongs;
-
-  const FavoritePage({Key? key, required this.favoriteSongs}) : super(key: key);
+class FavoritesPage extends StatelessWidget {
+  final FavoritesController favoritesController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        title: Text('Favorite Songs'),
+        backgroundColor: Colors.transparent,
+        title: Text(
+          'Favorites',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
-      body: ListView.builder(
-        itemCount: favoriteSongs.length,
-        itemBuilder: (context, index) {
-          return SongCard(song: favoriteSongs[index]);
-        },
+      body: Obx(
+        () => ListView.builder(
+          itemCount: favoritesController.favoriteSongs.length,
+          itemBuilder: (context, index) {
+            final song = favoritesController.favoriteSongs[index];
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                child: ListTile(
+                  title: Text(song.title),
+                  trailing: IconButton(
+                    icon: Icon(
+                      Icons.favorite,
+                      color: Colors.red,
+                    ),
+                    onPressed: () {
+                      favoritesController.dislike(song);
+                    },
+                  ),
+                  // Add more details or customize as needed
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:emosift/colors_scheme.dart';
+import 'package:emosift/screens/emotion_detector.dart';
 import 'package:emosift/screens/home_screen.dart';
 import 'package:emosift/widgets/app_bar.dart';
 import 'package:emosift/widgets/custom_button.dart';
@@ -145,7 +146,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   "Upload a file",
                                   style: AppColorScheme.heading4(
                                       fontSize: 18,
-                                      color: AppColorScheme.secondaryColor),
+                                      color: Colors.blue.shade900),
                                 ),
                               ),
                               SizedBox(
@@ -173,12 +174,12 @@ class _SignupScreenState extends State<SignupScreen> {
               SizedBox(height: 16.0),
               MyCustomButton(
                   name: "Signup",
-                  bgColor: AppColorScheme.secondaryColor,
+                  bgColor: Colors.blue.shade800,
                   textColor: AppColorScheme.white,
                   borderColor: AppColorScheme.secondaryColor,
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (ctx) => HomeScreen()));
+                        MaterialPageRoute(builder: (ctx) => EmotionDetector()));
                   },
                   isWhite: true)
             ],
