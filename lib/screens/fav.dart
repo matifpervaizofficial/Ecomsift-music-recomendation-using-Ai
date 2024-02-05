@@ -35,7 +35,6 @@ class FavoritesPage extends StatelessWidget {
                       favoritesController.dislike(song);
                     },
                   ),
-                  // Add more details or customize as needed
                 ),
               ),
             );
